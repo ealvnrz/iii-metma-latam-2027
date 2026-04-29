@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import ProgrammeTimeline from "../components/ProgrammeTimeline.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { programme } from "../data/programme";
+---
+
+<BaseLayout
+  title="Programme"
+  description="Preliminary programme information for III METMA LATAM 2027."
+>
+  <Hero
+    title="Preliminary Programme"
+    subtitle="Preliminary programme - To be announced."
+    date="1-3 September 2027"
+  />
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="To Be Announced"
+        title="A three-day scientific programme in Santiago"
+        lede="The structure below is a placeholder for planning purposes. Session titles, speakers, rooms, and exact times will be announced after the contributions process and invited programme are finalized."
+        align="center"
+      />
+      <ProgrammeTimeline days={programme} />
+    </div>
+  </section>
+</BaseLayout>

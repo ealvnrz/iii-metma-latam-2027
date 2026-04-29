@@ -1,0 +1,50 @@
+---
+import { navigation } from "../data/navigation";
+
+const currentPath = Astro.url.pathname;
+const normalize = (path: string) => (path === "/" ? "/" : path.replace(/\/$/, ""));
+const activePath = normalize(currentPath);
+---
+
+<header class="site-header">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="site-header__inner">
+    <a class="brand" href="/" aria-label="III METMA LATAM 2027 home">
+      <img src="/assets/isotipo-iii-nodos-transparente.svg" alt="" width="34" height="34" />
+      <span>
+        <strong>III METMA LATAM</strong>
+        <small>2027 - Santiago</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+
+    <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+      {navigation.map((item) => {
+        const itemPath = normalize(item.href);
+        const isActive = itemPath === "/" ? activePath === "/" : activePath === itemPath;
+        return (
+          <a href={item.href} aria-current={isActive ? "page" : undefined}>
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+  const nav = document.querySelector<HTMLElement>(".primary-nav");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+    nav?.classList.toggle("primary-nav--open", !isOpen);
+  });
+</script>

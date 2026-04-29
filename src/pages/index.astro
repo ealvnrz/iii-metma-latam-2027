@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ImportantDates from "../components/ImportantDates.astro";
+import SpeakerCard from "../components/SpeakerCard.astro";
+import SponsorGrid from "../components/SponsorGrid.astro";
+import Button from "../components/Button.astro";
+import { importantDates } from "../data/importantDates";
+import { speakers } from "../data/speakers";
+import { sponsorGroups } from "../data/sponsors";
+---
+
+<BaseLayout
+  title="III METMA LATAM 2027"
+  description="III METMA LATAM 2027, the Latin American Conference on Spatio-Temporal Modelling, will take place in Santiago, Chile, from 1-3 September 2027."
+>
+  <Hero
+    variant="home"
+    eyebrow="III METMA LATAM 2027"
+    title="III METMA LATAM 2027"
+    subtitle="Latin American Conference on Spatio-Temporal Modelling"
+    location="Santiago, Chile"
+    date="1-3 September 2027"
+    venue="Pontificia Universidad Catolica de Chile"
+    ctas={[
+      { label: "Contributions", href: "/contributions/" },
+      { label: "Registration", href: "/registration/", variant: "secondary" },
+      { label: "Programme", href: "/programme/", variant: "ghost" }
+    ]}
+  />
+
+  <section class="section section--intro">
+    <div class="container two-column">
+      <SectionHeading
+        eyebrow="Welcome"
+        title="A meeting point for spatio-temporal statistical science in Latin America"
+        lede="III METMA LATAM 2027 will bring together researchers, practitioners, and students working on spatial, temporal, and spatio-temporal statistical modelling."
+      />
+      <div class="prose">
+        <p>
+          The conference aims to foster methodological development, computational
+          innovation, and interdisciplinary applications across Latin America and
+          beyond. The scientific programme will include contributions on theory,
+          methodology, computation, and applied modelling for complex data indexed
+          in space and time.
+        </p>
+        <p>
+          The visual identity for this edition draws on Santiago, the Andes, and
+          Latin American geographies through contour lines, network structures,
+          point patterns, and map-like surfaces.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--warm">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Key Information"
+        title="Important dates"
+        lede="Confirmed conference dates are shown below. Submission, notification, and registration dates will be announced as the organization progresses."
+        align="center"
+      />
+      <ImportantDates items={importantDates} />
+    </div>
+  </section>
+
+  <section class="section section--deep">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Invited Speakers"
+        title="Invited speaker announcements will be published here"
+        lede="Confirmed speakers, affiliations, and lecture topics will be added as they become available."
+        align="center"
+      />
+      <div class="speaker-grid speaker-grid--preview">
+        {speakers.slice(0, 3).map((speaker) => <SpeakerCard speaker={speaker} />)}
+      </div>
+      <div class="section-actions">
+        <Button href="/speakers/" variant="secondary">View Speakers</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--venue">
+    <div class="container venue-preview">
+      <div>
+        <SectionHeading
+          eyebrow="Venue"
+          title="Santiago, Chile"
+          lede="The official poster indicates Santiago, Chile, and Pontificia Universidad Catolica de Chile as the host location for III METMA LATAM 2027."
+        />
+        <p>
+          Detailed room information, campus access, travel guidance, and local
+          practical notes will be added once confirmed by the organizing team.
+        </p>
+        <Button href="/venue/">Venue Information</Button>
+      </div>
+      <figure class="image-panel">
+        <img src="/assets/hero-home-overlay-transparente.webp" alt="Conference visual with Santiago skyline, Andes mountains, and Latin America map network" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Partners"
+        title="Sponsors and institutional partners"
+        lede="Host, partner, sponsor, and supporting society information will be updated as formal confirmations are available."
+        align="center"
+      />
+      <SponsorGrid groups={sponsorGroups.slice(0, 2)} />
+      <div class="section-actions">
+        <Button href="/sponsors/" variant="secondary">View Sponsors</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

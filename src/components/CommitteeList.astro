@@ -1,0 +1,30 @@
+---
+import type { CommitteeSection } from "../data/committees";
+
+type Props = {
+  sections: CommitteeSection[];
+};
+
+const { sections } = Astro.props;
+---
+
+<div class="committee-grid">
+  {sections.map((section) => (
+    <section class="committee-card" aria-labelledby={`${section.title.toLowerCase().replaceAll(" ", "-")}-heading`}>
+      <h3 id={`${section.title.toLowerCase().replaceAll(" ", "-")}-heading`}>{section.title}</h3>
+      <div class="committee-people">
+        {section.entries.map((entry) => (
+          <article class="committee-person">
+            <div class="committee-avatar" aria-hidden="true">
+              <img src="/assets/isotipo-iii-nodos-transparente.svg" alt="" loading="lazy" />
+            </div>
+            <div>
+              <strong>{entry}</strong>
+              <p>Affiliation to be announced</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+</div>

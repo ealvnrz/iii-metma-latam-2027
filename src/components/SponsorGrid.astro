@@ -1,0 +1,30 @@
+---
+import type { SponsorGroup } from "../data/sponsors";
+
+type Props = {
+  groups: SponsorGroup[];
+};
+
+const { groups } = Astro.props;
+---
+
+<div class="sponsor-groups">
+  {groups.map((group) => (
+    <section class="sponsor-group" aria-labelledby={`${group.title.toLowerCase().replaceAll(" ", "-")}-sponsors`}>
+      <h3 id={`${group.title.toLowerCase().replaceAll(" ", "-")}-sponsors`}>{group.title}</h3>
+      <div class="sponsor-grid">
+        {group.sponsors.map((sponsor) => (
+          <article class="sponsor-card">
+            <div class="sponsor-card__mark" aria-hidden="true">
+              <img src="/assets/isotipo-iii-nodos-transparente.svg" alt="" loading="lazy" />
+            </div>
+            <div>
+              <strong>{sponsor.name}</strong>
+              <p>{sponsor.status}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+</div>

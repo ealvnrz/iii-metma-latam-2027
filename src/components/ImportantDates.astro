@@ -1,0 +1,24 @@
+---
+import { importantDates as defaultDates } from "../data/importantDates";
+import type { ImportantDate } from "../data/importantDates";
+
+type Props = {
+  items?: ImportantDate[];
+  compact?: boolean;
+};
+
+const { items = defaultDates, compact = false } = Astro.props;
+---
+
+<div class:list={["important-dates", compact && "important-dates--compact"]}>
+  {items.map((item, index) => (
+    <article class:list={["date-card", item.highlighted && "date-card--highlighted"]}>
+      <div class="date-card__marker" aria-hidden="true">{index + 1}</div>
+      <div class="date-card__content">
+        <span class="date-card__label">{item.label}</span>
+        <strong>{item.date}</strong>
+        {item.note && <p>{item.note}</p>}
+      </div>
+    </article>
+  ))}
+</div>

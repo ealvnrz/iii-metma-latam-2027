@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import CommitteeList from "../components/CommitteeList.astro";
+import { committees } from "../data/committees";
+---
+
+<BaseLayout
+  title="Committees"
+  description="Organizing, scientific, and local committee information for III METMA LATAM 2027."
+>
+  <Hero
+    title="Committees"
+    subtitle="Organizing, scientific, and local committee information will be announced."
+  />
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Conference Organization"
+        title="Committee information"
+        lede="No committee names are published here until they are confirmed by the organizing team."
+        align="center"
+      />
+      <CommitteeList sections={committees} />
+    </div>
+  </section>
+</BaseLayout>

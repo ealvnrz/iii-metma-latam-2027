@@ -1,0 +1,26 @@
+---
+type Props = {
+  variant?: "light" | "dark";
+};
+
+const { variant = "light" } = Astro.props;
+---
+
+<div class:list={["decorative-pattern", `decorative-pattern--${variant}`]} aria-hidden="true">
+  <svg viewBox="0 0 640 320" role="presentation" focusable="false">
+    <path class="curve curve-a" d="M24 252 C 128 92, 216 286, 338 148 S 518 76, 616 214" />
+    <path class="curve curve-b" d="M40 78 C 144 36, 250 108, 330 70 S 514 20, 604 110" />
+    <path class="curve curve-c" d="M82 294 C 180 218, 246 224, 330 260 S 520 310, 610 244" />
+    <g class="nodes">
+      <circle cx="92" cy="148" r="6" />
+      <circle cx="214" cy="220" r="4" />
+      <circle cx="338" cy="148" r="7" />
+      <circle cx="472" cy="96" r="5" />
+      <circle cx="570" cy="210" r="6" />
+      <line x1="92" y1="148" x2="214" y2="220" />
+      <line x1="214" y1="220" x2="338" y2="148" />
+      <line x1="338" y1="148" x2="472" y2="96" />
+      <line x1="472" y1="96" x2="570" y2="210" />
+    </g>
+  </svg>
+</div>

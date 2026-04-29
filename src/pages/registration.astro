@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+
+const categories = [
+  "Regular participant",
+  "Student",
+  "Invited speaker",
+  "Accompanying person, if needed"
+];
+---
+
+<BaseLayout
+  title="Registration"
+  description="Registration information for III METMA LATAM 2027."
+>
+  <Hero
+    title="Registration"
+    subtitle="Registration details, categories, fees, and platform information will be announced."
+  />
+
+  <section class="section">
+    <div class="container two-column">
+      <SectionHeading
+        eyebrow="Status"
+        title="Registration is not open yet"
+        lede="Registration fees to be announced. Registration platform to be announced."
+      />
+      <div class="status-panel">
+        <strong>Registration status</strong>
+        <p>To be announced</p>
+        <strong>Fees</strong>
+        <p>Registration fees to be announced</p>
+        <strong>Platform</strong>
+        <p>Registration platform to be announced</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--warm">
+    <div class="container">
+      <SectionHeading eyebrow="Categories" title="Expected registration categories" align="center" />
+      <div class="cards-4">
+        {categories.map((category) => (
+          <article class="info-card info-card--compact">
+            <h2>{category}</h2>
+            <p>Details to be announced.</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-block content-block--wide">
+      <SectionHeading eyebrow="Included Items" title="What registration may include" />
+      <p>
+        Registration may include access to scientific sessions, conference
+        materials, coffee breaks, and selected social or networking activities.
+        The final list of included items will be confirmed with the registration
+        announcement.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

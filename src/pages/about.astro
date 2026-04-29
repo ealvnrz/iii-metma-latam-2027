@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+---
+
+<BaseLayout
+  title="About"
+  description="Learn about METMA LATAM and the scientific scope of III METMA LATAM 2027."
+>
+  <Hero
+    title="About METMA LATAM"
+    subtitle="A regional forum for spatial, temporal, and spatio-temporal statistical modelling."
+    location="Santiago, Chile"
+    date="1-3 September 2027"
+    venue="Pontificia Universidad Catolica de Chile"
+  />
+
+  <section class="section">
+    <div class="container content-grid">
+      <article class="content-block">
+        <SectionHeading eyebrow="About the Conference" title="A scientific meeting for modelling data in space and time" />
+        <p>
+          METMA LATAM is a scientific meeting focused on the development,
+          assessment, computation, and application of statistical methods for
+          spatial, temporal, and spatio-temporal data. III METMA LATAM 2027 will
+          provide a setting for researchers, students, and practitioners to
+          exchange ideas across methodological and applied communities.
+        </p>
+      </article>
+
+      <article class="content-block">
+        <SectionHeading eyebrow="Scientific Scope" title="Theory, methodology, computation, and applications" />
+        <p>
+          The conference welcomes work on spatial statistics, geostatistics,
+          point processes, areal data, spatial extremes, Bayesian spatial models,
+          computational methods, machine learning for geospatial data, and
+          interdisciplinary applications in environmental sciences, public
+          health, climate, ecology, mining, energy, natural resources, urban
+          systems, and public policy.
+        </p>
+      </article>
+
+      <article class="content-block">
+        <SectionHeading eyebrow="Why Latin America" title="Regional questions with global methodological relevance" />
+        <p>
+          Latin America offers a distinctive landscape for spatio-temporal
+          statistical science: diverse ecosystems, rapidly changing cities,
+          climate exposure, natural resource systems, public health challenges,
+          and large geospatial data streams. METMA LATAM creates room for
+          collaboration across countries, disciplines, and modelling traditions.
+        </p>
+      </article>
+
+      <article class="content-block">
+        <SectionHeading eyebrow="Previous Meetings" title="Extending the METMA tradition" />
+        <p>
+          METMA-LATAM extends the METMA tradition to Latin America, supporting a
+          sustained regional conversation about modern spatial, temporal, and
+          spatio-temporal statistical methods. Additional information about
+          previous METMA and METMA-LATAM meetings will be linked here once the
+          organizing team confirms the reference materials.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

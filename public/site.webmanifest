@@ -1,0 +1,29 @@
+{
+  "name": "III METMA LATAM",
+  "short_name": "METMA LATAM",
+  "icons": [
+    {
+      "src": "/assets/favicon-192x192-transparente.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicon-512x512-transparente.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/isotipo-iii-nodos-192x192-transparente.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/isotipo-iii-nodos-512x512-transparente.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#006c69",
+  "background_color": "#fbf4ea",
+  "display": "standalone"
+}

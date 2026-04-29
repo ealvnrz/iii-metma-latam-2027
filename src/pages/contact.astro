@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact information for III METMA LATAM 2027."
+>
+  <Hero
+    title="Contact"
+    subtitle="General contact information and official communication channels will be announced."
+  />
+
+  <section class="section">
+    <div class="container contact-layout">
+      <div>
+        <SectionHeading
+          eyebrow="Get in Touch"
+          title="Contact email to be announced"
+          lede="Questions about contributions, registration, local organization, accessibility, or participation can be directed here once the official contact address is available."
+        />
+      </div>
+      <aside class="contact-card">
+        <h2>Official channels</h2>
+        <dl>
+          <div>
+            <dt>Email</dt>
+            <dd>Contact email to be announced</dd>
+          </div>
+          <div>
+            <dt>Social media</dt>
+            <dd>Social media channels to be announced</dd>
+          </div>
+          <div>
+            <dt>Submission support</dt>
+            <dd>Submission platform to be announced</dd>
+          </div>
+          <div>
+            <dt>Registration support</dt>
+            <dd>Registration platform to be announced</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

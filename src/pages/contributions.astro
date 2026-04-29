@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import Button from "../components/Button.astro";
+---
+
+<BaseLayout
+  title="Contributions"
+  description="Contribution information for III METMA LATAM 2027."
+>
+  <Hero
+    title="Contributions"
+    subtitle="Contributions on spatial, temporal, and spatio-temporal statistical modelling."
+    ctas={[{ label: "Submission Platform", href: "#submission-platform" }]}
+  />
+
+  <section class="section">
+    <div class="container two-column">
+      <SectionHeading
+        eyebrow="Overview"
+        title="Scientific contributions are welcome across methodology and applications"
+        lede="The formal call, abstract template, submission dates, and review timeline will be announced by the organizing team."
+      />
+      <div class="prose">
+        <p>
+          III METMA LATAM 2027 invites contributions that advance statistical
+          modelling for spatial, temporal, and spatio-temporal data. Submissions
+          may address theoretical development, model assessment, computation,
+          data integration, visualization, reproducible workflows, or
+          interdisciplinary applications.
+        </p>
+        <p>
+          The conference will consider oral communications, posters, invited
+          sessions, and contributed sessions. All instructions below are
+          preliminary and will be updated once the submission platform is
+          confirmed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container cards-3">
+      <article class="info-card">
+        <h2>Submission types</h2>
+        <ul>
+          <li>Oral communications</li>
+          <li>Poster presentations</li>
+          <li>Invited sessions</li>
+          <li>Contributed sessions</li>
+        </ul>
+      </article>
+      <article class="info-card">
+        <h2>Abstract guidelines</h2>
+        <p>
+          Abstract length, formatting instructions, author limits, and template
+          files are to be announced.
+        </p>
+      </article>
+      <article class="info-card" id="submission-platform">
+        <h2>Submission platform</h2>
+        <p>Submission platform to be announced.</p>
+        <p>Notification timeline to be announced.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section final-band">
+    <div class="container final-band__inner">
+      <div>
+        <p class="eyebrow">Prepare Your Abstract</p>
+        <h2>Submission details will be published here first</h2>
+        <p>
+          Prospective contributors can follow this page for the final
+          instructions, abstract template, and submission timeline.
+        </p>
+      </div>
+      <Button href="/contact/" variant="secondary">Questions</Button>
+    </div>
+  </section>
+</BaseLayout>

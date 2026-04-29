@@ -1,0 +1,23 @@
+---
+import type { Speaker } from "../data/speakers";
+
+type Props = {
+  speaker: Speaker;
+};
+
+const { speaker } = Astro.props;
+---
+
+<article class="speaker-card">
+  <div class="speaker-card__visual" aria-hidden="true">
+    <div class="speaker-avatar">
+      <img src="/assets/isotipo-iii-nodos-transparente.svg" alt="" loading="lazy" />
+    </div>
+  </div>
+  <div class="speaker-card__body">
+    <span class="status-pill">{speaker.status}</span>
+    <h3>{speaker.name}</h3>
+    <p>{speaker.affiliation}</p>
+    <strong>{speaker.topic}</strong>
+  </div>
+</article>

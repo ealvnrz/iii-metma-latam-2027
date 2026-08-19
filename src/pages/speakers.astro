@@ -1,31 +1,43 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
-import SectionHeading from "../components/SectionHeading.astro";
-import SpeakerCard from "../components/SpeakerCard.astro";
-import { speakers } from "../data/speakers";
+import PageHero from '../components/PageHero.astro';
+import PeopleGrid from '../components/PeopleGrid.astro';
+import SitePageLayout from '../layouts/SitePageLayout.astro';
+import { site } from '../data/site';
+
+const title = 'Speakers | III METMA LATAM 2027';
+const description = 'Keynote and invited speakers for III METMA LATAM 2027 in Santiago, Chile.';
 ---
 
-<BaseLayout
-  title="Speakers"
-  description="Invited speaker information for III METMA LATAM 2027."
->
-  <Hero
-    title="Invited Speakers"
-    subtitle="Confirmed invited speakers, affiliations, and lecture topics will be announced."
+<SitePageLayout title={title} description={description}>
+  <PageHero
+    eyebrow="Scientific voices"
+    heading="Speakers"
+    lead={`The conference programme will feature ${site.speakers.keynoteCount} keynote speakers and ${site.speakers.invitedCount} invited speakers.`}
   />
 
-  <section class="section">
-    <div class="container">
-      <SectionHeading
-        eyebrow="To Be Announced"
-        title="Speaker announcements"
-        lede="This section is structured so confirmed speakers can be added without changing the page layout."
-        align="center"
-      />
-      <div class="speaker-grid">
-        {speakers.map((speaker) => <SpeakerCard speaker={speaker} />)}
+  <section class="detail-section detail-section-paper" aria-labelledby="keynote-title">
+    <div class="container collection-heading">
+      <div>
+        <p class="collection-number">{String(site.speakers.keynoteCount).padStart(2, '0')}</p>
+        <div>
+          <p class="eyebrow">Keynote programme</p>
+          <h2 id="keynote-title">Keynote speakers</h2>
+        </div>
       </div>
+      <PeopleGrid people={site.speakers.keynote} emptyMessage="Names and affiliations will be published as keynote invitations are confirmed." />
     </div>
   </section>
-</BaseLayout>
+
+  <section class="detail-section" aria-labelledby="invited-title">
+    <div class="container collection-heading">
+      <div>
+        <p class="collection-number">{site.speakers.invitedCount}</p>
+        <div>
+          <p class="eyebrow">Invited programme</p>
+          <h2 id="invited-title">Invited speakers</h2>
+        </div>
+      </div>
+      <PeopleGrid people={site.speakers.invited} emptyMessage="Names and affiliations will be published as invited-speaker confirmations are completed." />
+    </div>
+  </section>
+</SitePageLayout>

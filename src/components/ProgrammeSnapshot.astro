@@ -1,0 +1,30 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { site } from '../data/site';
+---
+
+<section class="section programme" id="programme" aria-labelledby="programme-title">
+  <div class="container">
+    <SectionHeading
+      label="Scientific programme"
+      heading="A focused three-day scientific programme"
+      headingId="programme-title"
+    />
+
+    <div class="programme-stats">
+      {site.programme.stats.map((item) => (
+        <div class="programme-stat">
+          <strong>{item.value}</strong>
+          <span>{item.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <p class="programme-copy">
+      The programme will combine keynote and invited contributions with opportunities for broader scientific
+      exchange. Speaker announcements and the detailed schedule will be added as confirmations are completed.
+    </p>
+
+    <a class="section-link" href="/programme">Explore the programme <span aria-hidden="true">→</span></a>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { site } from '../data/site';
+
+interface Props {
+  showPageLink?: boolean;
+}
+
+const { showPageLink = true } = Astro.props;
+---
+
+<section class="section venue" id="venue" aria-labelledby="venue-title">
+  <div class="venue-word" aria-hidden="true">Santiago</div>
+  <div class="container venue-inner">
+    <SectionHeading label="Venue" heading="Santiago, Chile" headingId="venue-title" />
+    <div class="venue-details">
+      <div class="venue-copy">
+        <p class="venue-name">{site.venue.name}</p>
+        <p class="venue-institution">{site.venue.institution}</p>
+        <address>
+          {site.venue.campus}<br />
+          {site.venue.address}
+        </address>
+      </div>
+
+      <div class="venue-map">
+        <iframe
+          src={site.venue.mapEmbedUrl}
+          title="Map showing the Faculty of Mathematics at the San Joaquín Campus"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      <a class="map-link" href={site.venue.mapUrl} target="_blank" rel="noreferrer">
+        Open in Google Maps <span aria-hidden="true">↗</span>
+      </a>
+      {showPageLink && (
+        <a class="section-link venue-page-link" href="/venue">Venue and travel information <span aria-hidden="true">→</span></a>
+      )}
+    </div>
+  </div>
+</section>

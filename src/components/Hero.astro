@@ -1,90 +1,34 @@
 ---
-import Button from "./Button.astro";
-import DecorativePattern from "./DecorativePattern.astro";
-
-type Cta = {
-  label: string;
-  href: string;
-  variant?: "primary" | "secondary" | "ghost";
-};
-
-type Props = {
-  eyebrow?: string;
-  title: string;
-  subtitle?: string;
-  location?: string;
-  date?: string;
-  venue?: string;
-  ctas?: Cta[];
-  variant?: "home" | "page";
-};
-
-const {
-  eyebrow = "III METMA LATAM 2027",
-  title,
-  subtitle,
-  location,
-  date,
-  venue,
-  ctas = [],
-  variant = "page"
-} = Astro.props;
-
-const mediaSrc = variant === "home"
-  ? "/assets/fondo-seccion-red-mapa-transparente.webp"
-  : "/assets/fondo-seccion-red-mapa-transparente.webp";
+import { site } from '../data/site';
 ---
 
-<section class:list={["hero", `hero--${variant}`]}>
-  <div class="hero__media" aria-hidden="true">
-    <img src={mediaSrc} alt="" />
-  </div>
-  <DecorativePattern variant={variant === "home" ? "dark" : "light"} />
-
-  <div class="container hero__inner">
-    <div class="hero__content">
-      <p class="eyebrow">{eyebrow}</p>
-      <h1>{title}</h1>
-      {subtitle && <p class="hero__subtitle">{subtitle}</p>}
-
-      {(location || date || venue) && (
-        <dl class="hero__meta">
-          {location && (
-            <div>
-              <dt>Location</dt>
-              <dd>{location}</dd>
-            </div>
-          )}
-          {date && (
-            <div>
-              <dt>Dates</dt>
-              <dd>{date}</dd>
-            </div>
-          )}
-          {venue && (
-            <div>
-              <dt>Venue</dt>
-              <dd>{venue}</dd>
-            </div>
-          )}
-        </dl>
-      )}
-
-      {ctas.length > 0 && (
-        <div class="hero__actions">
-          {ctas.map((cta) => (
-            <Button href={cta.href} variant={cta.variant ?? "primary"}>{cta.label}</Button>
-          ))}
-        </div>
-      )}
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="container hero-grid">
+    <div class="hero-brand">
+      <img
+        class="hero-logo"
+        src="/assets/brand/metma-latam-2027-master-transparent.png"
+        alt="III METMA LATAM 2027"
+        width="1559"
+        height="941"
+      />
     </div>
 
-    {variant === "home" && (
-      <aside class="hero__visual" aria-label="Conference visual identity">
-        <div class="hero-poster-card">
-          <img src="/assets/afiche_metma_latam.png" alt="Official poster for III METMA LATAM 2027" />
-        </div>
-      </aside>
-    )}
+    <div class="hero-copy">
+      <h1 id="hero-title">Latin American Conference on<br />Spatio-Temporal Modelling</h1>
+      <p class="hero-meta">
+        <span>{site.date}</span>
+        <i aria-hidden="true"></i>
+        <span>{site.location}</span>
+      </p>
+    </div>
+
+    <div class="date-poster" aria-label="1 to 3 September 2027, Santiago, Chile">
+      <p class="date-poster-days">01—03</p>
+      <div class="date-poster-details">
+        <p>September<br /><strong>2027</strong></p>
+        <p>Santiago<br /><strong>Chile</strong></p>
+      </div>
+    </div>
   </div>
 </section>

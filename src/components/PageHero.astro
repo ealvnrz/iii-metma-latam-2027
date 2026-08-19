@@ -1,0 +1,24 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  lead: string;
+}
+
+const { eyebrow, heading, lead } = Astro.props;
+---
+
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="container page-hero-grid">
+    <div>
+      <p class="eyebrow">{eyebrow}</p>
+      <h1 id="page-title">{heading}</h1>
+    </div>
+    <div class="page-hero-copy">
+      <p>{lead}</p>
+      <p class="page-hero-meta">{site.date}<span aria-hidden="true">·</span>{site.location}</p>
+    </div>
+  </div>
+</section>

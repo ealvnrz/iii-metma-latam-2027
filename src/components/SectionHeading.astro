@@ -1,16 +1,14 @@
 ---
-type Props = {
-  eyebrow?: string;
-  title: string;
-  lede?: string;
-  align?: "start" | "center";
-};
+interface Props {
+  label: string;
+  heading: string;
+  headingId: string;
+}
 
-const { eyebrow, title, lede, align = "start" } = Astro.props;
+const { label, heading, headingId } = Astro.props;
 ---
 
-<header class:list={["section-heading", `section-heading--${align}`]}>
-  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-  <h2>{title}</h2>
-  {lede && <p class="section-heading__lede">{lede}</p>}
-</header>
+<div class="section-heading">
+  <p class="eyebrow">{label}</p>
+  <h2 id={headingId}>{heading}</h2>
+</div>

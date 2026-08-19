@@ -1,50 +1,72 @@
 ---
-import { navigation } from "../data/navigation";
+import { site } from '../data/site';
 
-const currentPath = Astro.url.pathname;
-const normalize = (path: string) => (path === "/" ? "/" : path.replace(/\/$/, ""));
-const activePath = normalize(currentPath);
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 ---
 
-<header class="site-header">
-  <a class="skip-link" href="#main">Skip to main content</a>
-  <div class="site-header__inner">
-    <a class="brand" href="/" aria-label="III METMA LATAM 2027 home">
-      <img src="/assets/isotipo-iii-nodos-transparente.svg" alt="" width="34" height="34" />
-      <span>
-        <strong>III METMA LATAM</strong>
-        <small>2027 - Santiago</small>
-      </span>
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="III METMA LATAM 2027 — Home">
+      <img
+        src="/assets/brand/metma-latam-2027-horizontal-transparent.png"
+        alt="III METMA LATAM 2027"
+        width="1529"
+        height="918"
+      />
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
-      <span class="nav-toggle__bar"></span>
-      <span class="nav-toggle__bar"></span>
-      <span class="nav-toggle__bar"></span>
-      <span class="sr-only">Menu</span>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      aria-label="Open navigation menu"
+      data-menu-toggle
+    >
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
 
-    <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
-      {navigation.map((item) => {
-        const itemPath = normalize(item.href);
-        const isActive = itemPath === "/" ? activePath === "/" : activePath === itemPath;
-        return (
-          <a href={item.href} aria-current={isActive ? "page" : undefined}>
-            {item.label}
-          </a>
-        );
-      })}
+    <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-menu>
+      <ul>
+        {site.navigation.map((item) => {
+          const itemPath = item.href.replace(/\/+$/, '') || '/';
+          const isActive = currentPath === itemPath;
+
+          return (
+            <li>
+              <a href={item.href} aria-current={isActive ? 'page' : undefined}>{item.label}</a>
+            </li>
+          );
+        })}
+      </ul>
     </nav>
   </div>
 </header>
 
-<script>
-  const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
-  const nav = document.querySelector<HTMLElement>(".primary-nav");
+<script is:inline>
+  const menuButton = document.querySelector('[data-menu-toggle]');
+  const menu = document.querySelector('[data-menu]');
 
-  toggle?.addEventListener("click", () => {
-    const isOpen = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!isOpen));
-    nav?.classList.toggle("primary-nav--open", !isOpen);
-  });
+  if (menuButton instanceof HTMLButtonElement && menu instanceof HTMLElement) {
+    const closeMenu = () => {
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open navigation menu');
+      menu.removeAttribute('data-open');
+    };
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+      menu.toggleAttribute('data-open', !isOpen);
+    });
+
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 820) closeMenu();
+    });
+  }
 </script>

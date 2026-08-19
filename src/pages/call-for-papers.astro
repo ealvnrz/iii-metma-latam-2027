@@ -1,0 +1,38 @@
+---
+import PageHero from '../components/PageHero.astro';
+import SitePageLayout from '../layouts/SitePageLayout.astro';
+import { site } from '../data/site';
+
+const title = 'Call for Papers | III METMA LATAM 2027';
+const description = 'Forthcoming submission information for III METMA LATAM 2027.';
+const page = site.futurePages.callForPapers;
+---
+
+<SitePageLayout title={title} description={description} noindex={true}>
+  <PageHero
+    eyebrow="Scientific contributions"
+    heading="Call for Papers"
+    lead="Submission information is being prepared. This page is ready to publish once the scientific committee confirms the scope, requirements and key dates."
+  />
+
+  <section class="detail-section detail-section-paper" aria-labelledby="call-status-title">
+    <div class="container release-grid">
+      <div>
+        <p class="release-status">{page.status}</p>
+        <h2 id="call-status-title">What will be published here</h2>
+      </div>
+      <ol class="release-list">
+        {page.items.map((item, index) => (
+          <li><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="detail-section" aria-labelledby="call-next-title">
+    <div class="container detail-grid">
+      <div><p class="eyebrow">Publication status</p><h2 id="call-next-title">No action is required yet</h2></div>
+      <p class="status-note">The call is not open. Submission links and deadlines will appear only after they have been approved by the scientific committee.</p>
+    </div>
+  </section>
+</SitePageLayout>

@@ -1,94 +1,52 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
-import SectionHeading from "../components/SectionHeading.astro";
+import PageHero from '../components/PageHero.astro';
+import VenueSection from '../components/VenueSection.astro';
+import SitePageLayout from '../layouts/SitePageLayout.astro';
+import { site } from '../data/site';
+
+const title = 'Venue & Travel | III METMA LATAM 2027';
+const description = 'Venue, travel and accommodation information for III METMA LATAM 2027 in Santiago, Chile.';
 ---
 
-<BaseLayout
-  title="Venue"
-  description="Venue and travel information for III METMA LATAM 2027 in Santiago, Chile."
->
-  <Hero
-    title="Venue"
-    subtitle="Santiago, Chile, is indicated in the official conference poster as the host city."
-    location="Santiago, Chile"
-    date="1-3 September 2027"
-    venue="Pontificia Universidad Catolica de Chile"
+<SitePageLayout title={title} description={description}>
+  <PageHero
+    eyebrow="Plan your visit"
+    heading="Venue & travel"
+    lead={`The meeting will be held at the ${site.venue.name}, ${site.venue.institution}, in Santiago.`}
   />
 
-  <section class="section section--map">
-    <div class="container venue-map">
-      <SectionHeading
-        eyebrow="Location"
-        title="Faculty of Mathematics, UC, Chile"
-        lede="The map pin indicates the Faculty of Mathematics at Pontificia Universidad Catolica de Chile in Santiago. Final room and campus access details will be announced."
-        align="center"
-      />
-      <div class="map-panel">
-        <iframe
-          title="Map pin for the Faculty of Mathematics, Pontificia Universidad Catolica de Chile"
-          src="https://www.google.com/maps?cid=16673061285952092408&hl=en-US&source=embed&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-        ></iframe>
-        <a
-          class="map-panel__link"
-          href="https://www.google.com/maps?cid=16673061285952092408&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYASAA&hl=en-US&source=embed"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Open the Faculty of Mathematics UC in Google Maps
-        </a>
+  <VenueSection showPageLink={false} />
+
+  <section class="detail-section visitor-information" aria-labelledby="visitor-information-title">
+    <div class="container">
+      <div class="visitor-intro">
+        <div>
+          <p class="eyebrow">Plan your journey</p>
+          <h2 id="visitor-information-title">Practical information</h2>
+        </div>
+        <p>Travel guidance was reviewed on {site.visitorInformation.verifiedOn}. Details that depend on the final 2027 arrangements are clearly marked and will be updated before the meeting.</p>
+      </div>
+
+      <div class="visitor-card-grid">
+        {site.visitorInformation.sections.map((section, index) => (
+          <article class="visitor-card" id={section.id}>
+            <div class="visitor-card-topline">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <span class:list={['information-status', { 'information-status-pending': section.status === 'Details forthcoming' }]}>{section.status}</span>
+            </div>
+            <p class="eyebrow">{section.eyebrow}</p>
+            <h3>{section.title}</h3>
+            <p>{section.description}</p>
+            <div class="visitor-links">
+              {section.links.map((link) => (
+                <a class="text-link" href={link.url} target="_blank" rel="noreferrer">
+                  {link.label} <span aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
-
-  <section class="section">
-    <div class="container content-grid">
-      <article class="content-block">
-        <SectionHeading eyebrow="Host City" title="Santiago, Chile" />
-        <p>
-          Santiago sits between the Andes and Chile's central valley, offering a
-          distinctive urban and geographic setting for a conference on spatial
-          and spatio-temporal modelling.
-        </p>
-      </article>
-
-      <article class="content-block">
-        <SectionHeading eyebrow="Conference Venue" title="Pontificia Universidad Catolica de Chile" />
-        <p>
-          The official poster indicates Pontificia Universidad Catolica de Chile
-          as the conference venue. Specific campus, building, and room details
-          are to be announced.
-        </p>
-      </article>
-
-      <article class="content-block">
-        <SectionHeading eyebrow="Travel Information" title="Arrival guidance to be announced" />
-        <p>
-          Travel guidance, recommended arrival airports, visa notes, and local
-          orientation will be added after the local organization confirms the
-          official instructions.
-        </p>
-      </article>
-
-      <article class="content-block">
-        <SectionHeading eyebrow="Local Transportation" title="Transport details to be announced" />
-        <p>
-          Information on public transportation, campus access, taxi or ride-share
-          options, and mobility guidance will be published closer to the event.
-        </p>
-      </article>
-
-      <article class="content-block content-block--wide">
-        <SectionHeading eyebrow="Practical Information" title="Useful local notes" />
-        <p>
-          Practical information about weather, accessibility, internet access,
-          local currency, safety, and nearby services will be provided once the
-          local arrangements are confirmed.
-        </p>
-      </article>
-    </div>
-  </section>
-</BaseLayout>
+</SitePageLayout>

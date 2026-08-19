@@ -1,66 +1,38 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
-import SectionHeading from "../components/SectionHeading.astro";
+import PageHero from '../components/PageHero.astro';
+import SitePageLayout from '../layouts/SitePageLayout.astro';
+import { site } from '../data/site';
 
-const categories = [
-  "Regular participant",
-  "Student",
-  "Invited speaker",
-  "Accompanying person, if needed"
-];
+const title = 'Registration | III METMA LATAM 2027';
+const description = 'Forthcoming registration information for III METMA LATAM 2027.';
+const page = site.futurePages.registration;
 ---
 
-<BaseLayout
-  title="Registration"
-  description="Registration information for III METMA LATAM 2027."
->
-  <Hero
-    title="Registration"
-    subtitle="Registration details, categories, fees, and platform information will be announced."
+<SitePageLayout title={title} description={description} noindex={true}>
+  <PageHero
+    eyebrow="Attend the conference"
+    heading="Registration"
+    lead="Registration details are being prepared. This route can be activated in the main navigation as soon as categories, fees and policies are approved."
   />
 
-  <section class="section">
-    <div class="container two-column">
-      <SectionHeading
-        eyebrow="Status"
-        title="Registration is not open yet"
-        lede="Registration fees to be announced. Registration platform to be announced."
-      />
-      <div class="status-panel">
-        <strong>Registration status</strong>
-        <p>To be announced</p>
-        <strong>Fees</strong>
-        <p>Registration fees to be announced</p>
-        <strong>Platform</strong>
-        <p>Registration platform to be announced</p>
+  <section class="detail-section detail-section-paper" aria-labelledby="registration-status-title">
+    <div class="container release-grid">
+      <div>
+        <p class="release-status">{page.status}</p>
+        <h2 id="registration-status-title">Information to be confirmed</h2>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--warm">
-    <div class="container">
-      <SectionHeading eyebrow="Categories" title="Expected registration categories" align="center" />
-      <div class="cards-4">
-        {categories.map((category) => (
-          <article class="info-card info-card--compact">
-            <h2>{category}</h2>
-            <p>Details to be announced.</p>
-          </article>
+      <ol class="release-list">
+        {page.items.map((item, index) => (
+          <li><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container content-block content-block--wide">
-      <SectionHeading eyebrow="Included Items" title="What registration may include" />
-      <p>
-        Registration may include access to scientific sessions, conference
-        materials, coffee breaks, and selected social or networking activities.
-        The final list of included items will be confirmed with the registration
-        announcement.
-      </p>
+  <section class="detail-section" aria-labelledby="registration-next-title">
+    <div class="container detail-grid">
+      <div><p class="eyebrow">Publication status</p><h2 id="registration-next-title">Registration will open later</h2></div>
+      <p class="status-note">No registration form or payment link is active. Confirmed information will be published here before registration opens.</p>
     </div>
   </section>
-</BaseLayout>
+</SitePageLayout>

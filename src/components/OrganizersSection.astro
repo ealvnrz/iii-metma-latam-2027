@@ -1,0 +1,19 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { site } from '../data/site';
+---
+
+<section class="section organizers" id="organizers" aria-labelledby="organizers-title">
+  <div class="container">
+    <SectionHeading label="Organization" heading="Organizing institutions" headingId="organizers-title" />
+    <div class="organizer-grid">
+      {site.organizers.map((organizer) => (
+        <article class="organizer">
+          <p class="organizer-short">{organizer.short}</p>
+          <h3>{organizer.name}</h3>
+        </article>
+      ))}
+    </div>
+    <a class="section-link" href="/committees">View the committees <span aria-hidden="true">→</span></a>
+  </div>
+</section>

@@ -1,30 +1,60 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
-import ProgrammeTimeline from "../components/ProgrammeTimeline.astro";
-import SectionHeading from "../components/SectionHeading.astro";
-import { programme } from "../data/programme";
+import PageHero from '../components/PageHero.astro';
+import SitePageLayout from '../layouts/SitePageLayout.astro';
+import { site } from '../data/site';
+
+const title = 'Programme | III METMA LATAM 2027';
+const description = 'Scientific programme information for III METMA LATAM 2027 in Santiago, Chile.';
 ---
 
-<BaseLayout
-  title="Programme"
-  description="Preliminary programme information for III METMA LATAM 2027."
->
-  <Hero
-    title="Preliminary Programme"
-    subtitle="Preliminary programme - To be announced."
-    date="1-3 September 2027"
+<SitePageLayout title={title} description={description}>
+  <PageHero
+    eyebrow="Scientific programme"
+    heading="Programme"
+    lead="A focused three-day meeting built around keynote and invited contributions, with space for discussion and scientific exchange."
   />
 
-  <section class="section">
-    <div class="container">
-      <SectionHeading
-        eyebrow="To Be Announced"
-        title="A three-day scientific programme in Santiago"
-        lede="The structure below is a placeholder for planning purposes. Session titles, speakers, rooms, and exact times will be announced after the contributions process and invited programme are finalized."
-        align="center"
-      />
-      <ProgrammeTimeline days={programme} />
+  <section class="detail-section detail-section-paper" aria-labelledby="programme-overview-title">
+    <div class="container detail-grid">
+      <div>
+        <p class="eyebrow">At a glance</p>
+        <h2 id="programme-overview-title">The 2027 scientific programme</h2>
+      </div>
+      <div>
+        <div class="compact-stats">
+          {site.programme.stats.map((item) => (
+            <div class="compact-stat">
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </div>
+          ))}
+        </div>
+        <p class="detail-copy">Speaker announcements and the detailed timetable will be published as confirmations are completed.</p>
+      </div>
     </div>
   </section>
-</BaseLayout>
+
+  <section class="detail-section" aria-labelledby="schedule-title">
+    <div class="container detail-grid">
+      <div>
+        <p class="eyebrow">Schedule</p>
+        <h2 id="schedule-title">Three days in Santiago</h2>
+      </div>
+      <div>
+        {site.programme.days.length > 0 ? (
+          <div class="schedule-list">
+            {site.programme.days.map((day) => (
+              <article class="schedule-day">
+                <p>{day.label}</p>
+                <h3>{day.date}</h3>
+                <p>{day.sessions.length} scheduled sessions</p>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p class="status-note">The day-by-day schedule will be published here once the programme is finalized.</p>
+        )}
+      </div>
+    </div>
+  </section>
+</SitePageLayout>

@@ -1,0 +1,16 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { site } from '../data/site';
+---
+
+<section class="section venue-teaser" id="venue" aria-labelledby="venue-teaser-title">
+  <div class="venue-teaser-word" aria-hidden="true">Santiago</div>
+  <div class="container venue-teaser-grid">
+    <SectionHeading label="Venue" heading="Santiago, Chile" headingId="venue-teaser-title" />
+    <div class="venue-teaser-details">
+      <p class="venue-teaser-name">{site.venue.name}</p>
+      <p>{site.venue.institution}<br />{site.venue.campus}</p>
+      <a class="section-link" href="/venue">Venue & travel information <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

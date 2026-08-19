@@ -1,0 +1,38 @@
+---
+import type { Person } from '../data/site';
+
+interface Props {
+  people: Person[];
+  emptyMessage: string;
+}
+
+const { people, emptyMessage } = Astro.props;
+---
+
+{people.length > 0 ? (
+  <div class="people-grid">
+    {people.map((person) => (
+      <article class="person-card">
+        {person.portrait && (
+          <img
+            src={person.portrait.src}
+            alt={person.portrait.alt}
+            width={person.portrait.width}
+            height={person.portrait.height}
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        <div>
+          {person.role && <p class="person-role">{person.role}</p>}
+          <h3>{person.name}</h3>
+          <p class="person-affiliation">{person.affiliation}{person.country && ` · ${person.country}`}</p>
+          {person.bio && <p class="person-bio">{person.bio}</p>}
+          {person.website && <a class="text-link" href={person.website}>View profile <span aria-hidden="true">↗</span></a>}
+        </div>
+      </article>
+    ))}
+  </div>
+) : (
+  <p class="status-note">{emptyMessage}</p>
+)}

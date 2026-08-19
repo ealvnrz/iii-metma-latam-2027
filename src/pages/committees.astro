@@ -1,29 +1,54 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
-import SectionHeading from "../components/SectionHeading.astro";
-import CommitteeList from "../components/CommitteeList.astro";
-import { committees } from "../data/committees";
+import PageHero from '../components/PageHero.astro';
+import PeopleGrid from '../components/PeopleGrid.astro';
+import SitePageLayout from '../layouts/SitePageLayout.astro';
+import { site } from '../data/site';
+
+const title = 'Committees | III METMA LATAM 2027';
+const description = 'Organizing and scientific committees for III METMA LATAM 2027.';
 ---
 
-<BaseLayout
-  title="Committees"
-  description="Organizing, scientific, and local committee information for III METMA LATAM 2027."
->
-  <Hero
-    title="Committees"
-    subtitle="Organizing, scientific, and local committee information will be announced."
+<SitePageLayout title={title} description={description}>
+  <PageHero
+    eyebrow="Conference organization"
+    heading="Committees"
+    lead="The organizing and scientific committees bring together the people shaping the 2027 meeting and its scientific programme."
   />
 
-  <section class="section">
-    <div class="container">
-      <SectionHeading
-        eyebrow="Conference Organization"
-        title="Committee information"
-        lede="No committee names are published here until they are confirmed by the organizing team."
-        align="center"
-      />
-      <CommitteeList sections={committees} />
+  <section class="detail-section detail-section-paper" aria-labelledby="organizing-committee-title">
+    <div class="container detail-grid">
+      <div>
+        <p class="eyebrow">Conference team</p>
+        <h2 id="organizing-committee-title">Organizing committee</h2>
+      </div>
+      <PeopleGrid people={site.committees.organizing} emptyMessage="The organizing committee is being formed. Names and affiliations will be published here." />
     </div>
   </section>
-</BaseLayout>
+
+  <section class="detail-section" aria-labelledby="scientific-committee-title">
+    <div class="container detail-grid">
+      <div>
+        <p class="eyebrow">Scientific direction</p>
+        <h2 id="scientific-committee-title">Scientific committee</h2>
+      </div>
+      <PeopleGrid people={site.committees.scientific} emptyMessage="The scientific committee is being formed. Names and affiliations will be published here." />
+    </div>
+  </section>
+
+  <section class="detail-section detail-section-ink" aria-labelledby="institutions-title">
+    <div class="container detail-grid">
+      <div>
+        <p class="eyebrow">Hosts</p>
+        <h2 id="institutions-title">Organizing institutions</h2>
+      </div>
+      <div class="institution-list">
+        {site.organizers.map((organizer) => (
+          <article>
+            <p>{organizer.short}</p>
+            <h3>{organizer.name}</h3>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</SitePageLayout>

@@ -195,9 +195,16 @@ h3 {
   overflow: hidden;
 }
 
+.hero-brand-row {
+  display: flex;
+  justify-content: center;
+  padding-top: clamp(48px, 6vw, 72px);
+  padding-bottom: clamp(40px, 5vw, 58px);
+}
+
 .hero-visual {
   position: relative;
-  min-height: clamp(430px, 47vw, 610px);
+  min-height: clamp(380px, 39vw, 500px);
   overflow: hidden;
   background: #466472;
 }
@@ -217,16 +224,7 @@ h3 {
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: center 18%;
-}
-
-.hero-visual-inner {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  min-height: inherit;
-  align-items: flex-end;
-  padding-bottom: clamp(30px, 4vw, 52px);
+  object-position: center 8%;
 }
 
 .hero-grid {
@@ -240,13 +238,8 @@ h3 {
 }
 
 .hero-brand {
-  width: min(540px, 58vw);
-  padding: 22px 34px 20px;
+  width: min(100%, 580px);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.68);
-  background: rgba(255, 255, 255, 0.93);
-  box-shadow: 0 18px 55px rgba(7, 28, 37, 0.17);
-  backdrop-filter: blur(10px);
 }
 
 .hero-logo {
@@ -1292,7 +1285,7 @@ h3 {
   }
 
   .hero-visual {
-    min-height: clamp(400px, 72vw, 540px);
+    min-height: clamp(360px, 59vw, 460px);
   }
 
   .hero-grid {
@@ -1306,7 +1299,7 @@ h3 {
   }
 
   .hero-brand {
-    width: min(510px, 72vw);
+    width: min(100%, 510px);
   }
 
   .hero h1 {
@@ -1401,21 +1394,20 @@ h3 {
   }
 
   .hero-visual {
-    min-height: 430px;
+    min-height: 360px;
   }
 
-  .hero-visual-inner {
-    align-items: flex-end;
-    padding-bottom: 27px;
+  .hero-brand-row {
+    padding-top: 38px;
+    padding-bottom: 30px;
   }
 
   .hero-brand {
     width: min(100%, 420px);
-    padding: 16px 24px 14px;
   }
 
   .hero-photo {
-    object-position: 54% 18%;
+    object-position: 54% 10%;
   }
 
   .hero-photo-credit {

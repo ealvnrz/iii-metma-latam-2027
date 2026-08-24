@@ -1,9 +1,5 @@
----
-import { site } from '../data/site';
----
-
 <section class="hero" id="top" aria-labelledby="hero-title">
-  <div class="container hero-brand-row">
+  <div class="container hero-masthead">
     <div class="hero-brand">
       <img
         class="hero-logo"
@@ -12,6 +8,15 @@ import { site } from '../data/site';
         width="1559"
         height="941"
       />
+    </div>
+
+    <div class="hero-masthead-copy">
+      <h1 id="hero-title">Latin American Conference on<br />Spatio-Temporal Modelling</h1>
+      <div class="hero-masthead-meta" aria-label="1 to 3 September 2027, Santiago, Chile">
+        <p class="hero-masthead-days">01—03</p>
+        <p>September<br /><strong>2027</strong></p>
+        <p>Santiago<br /><strong>Chile</strong></p>
+      </div>
     </div>
   </div>
 
@@ -27,24 +32,5 @@ import { site } from '../data/site';
     <p class="hero-photo-credit">
       Photo by <a href="https://unsplash.com/photos/a-view-of-a-city-with-mountains-in-the-background-eXL2DYVmq-0">Chalo Gallardo / Unsplash</a>
     </p>
-  </div>
-
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <h1 id="hero-title">Latin American Conference on<br />Spatio-Temporal Modelling</h1>
-      <p class="hero-meta">
-        <span>{site.date}</span>
-        <i aria-hidden="true"></i>
-        <span>{site.location}</span>
-      </p>
-    </div>
-
-    <div class="date-poster" aria-label="1 to 3 September 2027, Santiago, Chile">
-      <p class="date-poster-days">01—03</p>
-      <div class="date-poster-details">
-        <p>September<br /><strong>2027</strong></p>
-        <p>Santiago<br /><strong>Chile</strong></p>
-      </div>
-    </div>
   </div>
 </section>

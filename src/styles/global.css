@@ -206,17 +206,9 @@ h3 {
 
 .hero-visual {
   position: relative;
-  min-height: clamp(380px, 39vw, 500px);
+  min-height: clamp(430px, 44vw, 720px);
   overflow: hidden;
   background: #466472;
-}
-
-.hero-visual::after {
-  position: absolute;
-  inset: 45% 0 0;
-  background: linear-gradient(to bottom, transparent, rgba(5, 18, 25, 0.34));
-  content: '';
-  pointer-events: none;
 }
 
 .hero-photo {
@@ -226,35 +218,16 @@ h3 {
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: center 8%;
+  object-position: center 16%;
 }
 
 .hero-brand {
-  width: min(100%, 420px);
-  overflow: hidden;
+  width: min(100%, 400px);
 }
 
 .hero-logo {
   width: 100%;
-  margin: -8% 0 -5%;
-}
-
-.hero-photo-credit {
-  position: absolute;
-  z-index: 3;
-  right: 18px;
-  bottom: 13px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
-}
-
-.hero-photo-credit a {
-  text-decoration-color: rgba(255, 255, 255, 0.46);
-  text-underline-offset: 3px;
 }
 
 .hero h1 {
@@ -1367,12 +1340,6 @@ h3 {
 
   .hero-photo {
     object-position: 54% 10%;
-  }
-
-  .hero-photo-credit {
-    right: 12px;
-    bottom: 8px;
-    font-size: 8px;
   }
 
   .hero h1 {

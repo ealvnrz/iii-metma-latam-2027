@@ -3,13 +3,21 @@ export interface PersonPortrait {
   alt: string;
   width: number;
   height: number;
+  position?: string;
+  scale?: number;
+  origin?: string;
+}
+
+export interface PersonAffiliation {
+  institution: string;
+  country: string;
+  website?: string;
 }
 
 export interface Person {
   id: string;
   name: string;
-  affiliation: string;
-  country: string;
+  affiliations: PersonAffiliation[];
   role?: string;
   bio?: string;
   portrait?: PersonPortrait;
@@ -35,6 +43,38 @@ export interface ExternalLink {
   url: string;
 }
 
+export interface Institution {
+  id: string;
+  name: string;
+  website: string;
+  logo: {
+    src: string;
+    width: number;
+    height: number;
+  };
+}
+
+const institutions = {
+  uc: {
+    id: 'uc',
+    name: 'Pontificia Universidad Católica de Chile',
+    website: 'https://www.uc.cl/',
+    logo: { src: '/assets/institutions/uc-chile.svg', width: 609, height: 235 },
+  },
+  ubb: {
+    id: 'ubb',
+    name: 'Universidad del Bío-Bío',
+    website: 'https://www.ubiobio.cl/',
+    logo: { src: '/assets/institutions/ubb.png', width: 1248, height: 823 },
+  },
+  anid: {
+    id: 'anid',
+    name: 'Agencia Nacional de Investigación y Desarrollo (ANID)',
+    website: 'https://anid.gob.cl/',
+    logo: { src: '/assets/institutions/anid-minciencia.svg', width: 471, height: 253 },
+  },
+} satisfies Record<string, Institution>;
+
 export interface VisitorInformationSection {
   id: string;
   eyebrow: string;
@@ -48,6 +88,9 @@ export const site = {
   conference: 'III METMA LATAM 2027',
   title: 'Latin American Conference on Spatio-Temporal Modelling',
   date: '1–3 September 2027',
+  startDate: '2027-09-01',
+  endDateExclusive: '2027-09-04',
+  timeZone: 'America/Santiago',
   location: 'Santiago, Chile',
   venue: {
     name: 'Faculty of Mathematics',
@@ -67,7 +110,64 @@ export const site = {
   speakers: {
     keynoteCount: 4,
     invitedCount: 10,
-    keynote: [] as Person[],
+    keynote: [
+      {
+        id: 'elias-krainski',
+        name: 'Elias Krainski',
+        affiliations: [{
+          institution: 'King Abdullah University of Science and Technology (KAUST)',
+          country: 'Saudi Arabia',
+          website: 'https://cemse.kaust.edu.sa/profiles/elias-teixeira-krainski',
+        }],
+        portrait: {
+          src: '/assets/people/speakers/elias-krainski.webp',
+          alt: 'Portrait of Elias Krainski',
+          width: 1280,
+          height: 720,
+          scale: 1.7,
+          origin: '50% 22%',
+        },
+      },
+      {
+        id: 'victor-de-oliveira',
+        name: 'Victor De Oliveira',
+        affiliations: [{
+          institution: 'The University of Texas at San Antonio',
+          country: 'United States',
+          website: 'https://caicc.utsa.edu/faculty/profiles/de-oliveira-victor.html',
+        }],
+        portrait: {
+          src: '/assets/people/speakers/victor-de-oliveira.png',
+          alt: 'Portrait of Victor De Oliveira',
+          width: 399,
+          height: 500,
+          position: 'center top',
+        },
+      },
+      {
+        id: 'moreno-bevilacqua',
+        name: 'Moreno Bevilacqua',
+        affiliations: [
+          {
+            institution: 'Universidad Adolfo Ibáñez (UAI)',
+            country: 'Chile',
+            website: 'https://www.uai.cl/profesores/ingenieria-y-ciencias/moreno-bevilacqua',
+          },
+          {
+            institution: 'Ca’ Foscari University of Venice',
+            country: 'Italy',
+            website: 'https://www.unive.it/data/people/25678903',
+          },
+        ],
+        portrait: {
+          src: '/assets/people/speakers/moreno-bevilacqua.jpg',
+          alt: 'Portrait of Moreno Bevilacqua',
+          width: 220,
+          height: 220,
+          position: 'center top',
+        },
+      },
+    ] as Person[],
     invited: [] as Person[],
   },
   committees: {
@@ -151,10 +251,8 @@ export const site = {
       ],
     },
   },
-  organizers: [
-    { short: 'UC', name: 'Pontificia Universidad Católica de Chile' },
-    { short: 'USM', name: 'Universidad Técnica Federico Santa María' },
-  ],
+  organizers: [institutions.uc],
+  sponsors: [institutions.uc, institutions.ubb, institutions.anid],
   navigation: [
     { label: 'Home', href: '/' },
     { label: 'Programme', href: '/programme' },

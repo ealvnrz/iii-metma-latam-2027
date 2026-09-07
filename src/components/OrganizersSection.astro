@@ -1,19 +1,24 @@
 ---
-import SectionHeading from './SectionHeading.astro';
+import InstitutionGrid from './InstitutionGrid.astro';
 import { site } from '../data/site';
+
+interface Props {
+  showCommitteeLink?: boolean;
+}
+
+const { showCommitteeLink = true } = Astro.props;
 ---
 
 <section class="section organizers" id="organizers" aria-labelledby="organizers-title">
   <div class="container">
-    <SectionHeading label="Organization" heading="Organizing institutions" headingId="organizers-title" />
-    <div class="organizer-grid">
-      {site.organizers.map((organizer) => (
-        <article class="organizer">
-          <p class="organizer-short">{organizer.short}</p>
-          <h3>{organizer.name}</h3>
-        </article>
-      ))}
+    <div class="institution-group institution-group-organizer">
+      <h2 id="organizers-title">Organized by</h2>
+      <InstitutionGrid institutions={site.organizers} organizer />
     </div>
-    <a class="section-link" href="/committees">View the committees <span aria-hidden="true">→</span></a>
+    <div class="institution-group" role="group" aria-labelledby="sponsors-title">
+      <h2 id="sponsors-title">Supporting institutions</h2>
+      <InstitutionGrid institutions={site.sponsors} />
+    </div>
+    {showCommitteeLink && <a class="section-link" href="/committees">View the committees <span aria-hidden="true">→</span></a>}
   </div>
 </section>

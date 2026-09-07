@@ -1,0 +1,30 @@
+---
+import type { Institution } from '../data/site';
+
+interface Props {
+  institutions: Institution[];
+  organizer?: boolean;
+}
+
+const { institutions, organizer = false } = Astro.props;
+---
+
+<ul class:list={['institution-grid', { 'institution-grid-organizer': organizer }]}>
+  {institutions.map((institution) => (
+    <li class:list={['institution', `institution-${institution.id}`]}>
+      <a href={institution.website} class="institution-link">
+        <span class="institution-logo-space">
+          <img
+            src={institution.logo.src}
+            width={institution.logo.width}
+            height={institution.logo.height}
+            alt={institution.id === 'anid' ? 'ANID and the Ministry of Science, Technology, Knowledge and Innovation of Chile' : ''}
+            loading="lazy"
+            decoding="async"
+          />
+        </span>
+        <span class="institution-name">{institution.name}</span>
+      </a>
+    </li>
+  ))}
+</ul>

@@ -1,6 +1,7 @@
 ---
 import PageHero from '../components/PageHero.astro';
 import PeopleGrid from '../components/PeopleGrid.astro';
+import OrganizersSection from '../components/OrganizersSection.astro';
 import SitePageLayout from '../layouts/SitePageLayout.astro';
 import { site } from '../data/site';
 
@@ -35,20 +36,5 @@ const description = 'Organizing and scientific committees for III METMA LATAM 20
     </div>
   </section>
 
-  <section class="detail-section detail-section-ink" aria-labelledby="institutions-title">
-    <div class="container detail-grid">
-      <div>
-        <p class="eyebrow">Hosts</p>
-        <h2 id="institutions-title">Organizing institutions</h2>
-      </div>
-      <div class="institution-list">
-        {site.organizers.map((organizer) => (
-          <article>
-            <p>{organizer.short}</p>
-            <h3>{organizer.name}</h3>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+  <OrganizersSection showCommitteeLink={false} />
 </SitePageLayout>

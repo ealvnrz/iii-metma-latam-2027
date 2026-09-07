@@ -1,0 +1,15 @@
+---
+import PeopleGrid from './PeopleGrid.astro';
+import SectionHeading from './SectionHeading.astro';
+import { site } from '../data/site';
+---
+
+<section class="section keynote-preview" id="speakers" aria-labelledby="speakers-title">
+  <div class="container">
+    <div class="keynote-preview-heading">
+      <SectionHeading label="Meet our keynotes" heading="Keynote speakers" headingId="speakers-title" />
+      <a class="text-link" href="/speakers">All speakers <span aria-hidden="true">→</span></a>
+    </div>
+    <PeopleGrid people={site.speakers.keynote} expectedCount={site.speakers.keynoteCount} emptyMessage="Keynote speakers will be announced soon." preview />
+  </div>
+</section>

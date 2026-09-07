@@ -1,0 +1,71 @@
+---
+import { site } from '../data/site';
+---
+
+<conference-countdown
+  class="conference-countdown"
+  data-start={site.startDate}
+  data-end={site.endDateExclusive}
+  data-time-zone={site.timeZone}
+>
+  <div class="countdown-intro">
+    <p class="eyebrow" data-countdown-heading>See you in Santiago</p>
+    <p><time datetime={site.startDate}>{site.date}</time></p>
+  </div>
+  <div class="countdown-units" role="timer" aria-label="Time until 1 September 2027 in Santiago" aria-live="off" hidden>
+    {['Days', 'Hours', 'Minutes', 'Seconds'].map((unit) => (
+      <div class="countdown-unit">
+        <span class="countdown-value" data-unit={unit.toLowerCase()}>00</span>
+        <span class="countdown-label">{unit}</span>
+      </div>
+    ))}
+  </div>
+  <p class="countdown-status" data-countdown-status hidden></p>
+</conference-countdown>
+
+<script>
+  import { countdownState, zonedMidnight } from '../utils/countdown';
+
+  class ConferenceCountdown extends HTMLElement {
+    interval?: ReturnType<typeof setInterval>;
+
+    connectedCallback() {
+      const { start, end, timeZone } = this.dataset;
+      if (!start || !end || !timeZone) return;
+      const startTime = zonedMidnight(start, timeZone);
+      const endTime = zonedMidnight(end, timeZone);
+      const units = this.querySelector<HTMLElement>('.countdown-units');
+      const status = this.querySelector<HTMLElement>('[data-countdown-status]');
+      const heading = this.querySelector<HTMLElement>('[data-countdown-heading]');
+      if (!units || !status || !heading) return;
+
+      const update = () => {
+        const state = countdownState(Date.now(), startTime, endTime);
+        const upcoming = state.phase === 'upcoming';
+        units.hidden = !upcoming;
+        status.hidden = upcoming;
+        if (upcoming) {
+          this.querySelectorAll<HTMLElement>('[data-unit]').forEach((element) => {
+            const unit = element.dataset.unit as 'days' | 'hours' | 'minutes' | 'seconds';
+            const value = String(state[unit]).padStart(2, '0');
+            if (element.textContent !== value) element.textContent = value;
+          });
+        } else {
+          heading.textContent = 'III METMA LATAM 2027';
+          status.textContent = state.phase === 'ongoing' ? 'The conference is underway.' : 'Thank you for joining us in Santiago.';
+        }
+        if (state.phase === 'finished') clearInterval(this.interval);
+      };
+      this.interval = setInterval(update, 1000);
+      update();
+    }
+
+    disconnectedCallback() {
+      clearInterval(this.interval);
+    }
+  }
+
+  if (!customElements.get('conference-countdown')) {
+    customElements.define('conference-countdown', ConferenceCountdown);
+  }
+</script>

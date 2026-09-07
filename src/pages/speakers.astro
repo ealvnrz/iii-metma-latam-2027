@@ -24,7 +24,7 @@ const description = 'Keynote and invited speakers for III METMA LATAM 2027 in Sa
           <h2 id="keynote-title">Keynote speakers</h2>
         </div>
       </div>
-      <PeopleGrid people={site.speakers.keynote} emptyMessage="Names and affiliations will be published as keynote invitations are confirmed." />
+      <PeopleGrid people={site.speakers.keynote} expectedCount={site.speakers.keynoteCount} emptyMessage="Names and affiliations will be published as keynote invitations are confirmed." />
     </div>
   </section>
 

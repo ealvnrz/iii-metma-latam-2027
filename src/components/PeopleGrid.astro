@@ -4,31 +4,59 @@ import type { Person } from '../data/site';
 interface Props {
   people: Person[];
   emptyMessage: string;
+  preview?: boolean;
+  expectedCount?: number;
 }
 
-const { people, emptyMessage } = Astro.props;
+const { people, emptyMessage, preview = false, expectedCount = 0 } = Astro.props;
+const pendingCount = Math.max(0, expectedCount - people.length);
 ---
 
-{people.length > 0 ? (
-  <div class="people-grid">
+{people.length > 0 || pendingCount > 0 ? (
+  <div class:list={['people-grid', { 'people-grid-four': expectedCount === 4 }]}>
     {people.map((person) => (
-      <article class="person-card">
+      <article class="person-card" id={preview ? undefined : person.id}>
         {person.portrait && (
-          <img
-            src={person.portrait.src}
-            alt={person.portrait.alt}
-            width={person.portrait.width}
-            height={person.portrait.height}
-            loading="lazy"
-            decoding="async"
-          />
+          <div class="person-portrait">
+            <img
+              src={person.portrait.src}
+              alt={person.portrait.alt}
+              width={person.portrait.width}
+              height={person.portrait.height}
+              style={{
+                objectPosition: person.portrait.position ?? 'center',
+                '--portrait-scale': person.portrait.scale ?? 1,
+                '--portrait-origin': person.portrait.origin ?? 'center',
+              }}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         )}
-        <div>
+        <div class="person-copy">
           {person.role && <p class="person-role">{person.role}</p>}
           <h3>{person.name}</h3>
-          <p class="person-affiliation">{person.affiliation}{person.country && ` · ${person.country}`}</p>
+          {person.affiliations.map((affiliation) => (
+            <div class="person-affiliation-group">
+              <p class="person-affiliation">{affiliation.institution}</p>
+              <p class="person-country">{affiliation.country}</p>
+            </div>
+          ))}
           {person.bio && <p class="person-bio">{person.bio}</p>}
-          {person.website && <a class="text-link" href={person.website}>View profile <span aria-hidden="true">↗</span></a>}
+          {!preview && person.website && (
+            <a class="text-link" href={person.website} aria-label={`Institutional profile of ${person.name}`}>View profile <span aria-hidden="true">↗</span></a>
+          )}
+        </div>
+      </article>
+    ))}
+    {Array.from({ length: pendingCount }, (_, index) => (
+      <article class="person-card person-card-pending">
+        <div class="person-portrait person-portrait-pending" aria-hidden="true">
+          <span>{String(people.length + index + 1).padStart(2, '0')}</span>
+        </div>
+        <div class="person-copy">
+          <h3>To be announced</h3>
+          <p class="person-affiliation">Keynote speaker</p>
         </div>
       </article>
     ))}

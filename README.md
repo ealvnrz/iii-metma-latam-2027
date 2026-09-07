@@ -39,9 +39,27 @@ Original logo files remain untouched in `logo/`. The two transparent web-ready c
 
 ## People and portraits
 
-Speaker and committee records use the shared `Person` structure in `src/data/site.ts`. Every published record requires a unique ID, name, affiliation and country. Portrait metadata includes accessible alternative text and explicit image dimensions to prevent layout movement while images load.
+Speaker and committee records use the shared `Person` structure in `src/data/site.ts`. Every published record requires a unique ID, name and an `affiliations` array. Each affiliation pairs an institution with its country and can store its institutional profile URL. Keynote cards show the portrait, name, affiliations and countries. Portrait metadata includes accessible alternative text and explicit image dimensions to prevent layout movement while images load.
 
 The portrait crop, size, format, filenames and folder conventions are documented in `public/assets/people/README.md`.
+
+## Organizing and supporting institutions
+
+`site.organizers` lists UC Chile as the sole organizing institution. `site.sponsors` lists UC Chile, Universidad del Bío-Bío and ANID, in that order. The homepage and committees page use the same institutional-logo components and records. Original logo assets, their official sources and applicable brand guidance are documented in `public/assets/institutions/README.md`.
+
+## Homepage photograph
+
+The homepage uses a single full-width photograph with a top-aligned crop to preserve the Andes. The hero height is the greater of 760 CSS pixels or 41.6667% of the viewport width, preserving approximately 12:5 proportions on wide screens. Wide windows gain vertical space for the landscape, and narrow windows retain enough height for the masthead and countdown. The image uses `sizes="100vw"` and responsive sources up to 4800 pixels; there are no blurred side fills or edge masks.
+
+## Conference countdown
+
+The homepage counts down to the beginning of `site.startDate` in `site.timeZone` (`America/Santiago`). This is the first conference date, not an announced opening-session time. The browser resolves the zone offset using its time-zone data. During the meeting and after `site.endDateExclusive`, the timer shows a corresponding message instead of negative values. Without JavaScript, the conference dates remain visible.
+
+Run the date-boundary checks with Node.js 24 or later:
+
+```bash
+node --test tests/countdown.test.ts
+```
 
 ## Visitor information
 

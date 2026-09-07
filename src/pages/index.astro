@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import KeynoteSpeakers from '../components/KeynoteSpeakers.astro';
 import OrganizersSection from '../components/OrganizersSection.astro';
 import ProgrammeSnapshot from '../components/ProgrammeSnapshot.astro';
 import SectionHeading from '../components/SectionHeading.astro';
@@ -16,6 +17,7 @@ const description = 'III METMA LATAM 2027, the Latin American Conference on Spat
   <Header />
   <main id="main-content">
     <Hero />
+    <KeynoteSpeakers />
 
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="container split-section">
@@ -32,17 +34,6 @@ const description = 'III METMA LATAM 2027, the Latin American Conference on Spat
     </section>
 
     <ProgrammeSnapshot />
-
-    <section class="section important-date" id="dates" aria-labelledby="dates-title">
-      <div class="container">
-        <SectionHeading label="Important date" heading="Save the date" headingId="dates-title" />
-        <div class="date-row">
-          <p class="date-row-days">01—03</p>
-          <p>September<br /><strong>2027</strong></p>
-          <p>Santiago<br /><strong>Chile</strong></p>
-        </div>
-      </div>
-    </section>
 
     <VenueTeaser />
     <OrganizersSection />

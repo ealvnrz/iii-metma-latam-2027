@@ -1,3 +1,7 @@
+---
+import Countdown from './Countdown.astro';
+---
+
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="container hero-masthead">
     <div class="hero-brand">
@@ -17,19 +21,24 @@
         <p>September<br /><strong>2027</strong></p>
         <p>Santiago<br /><strong>Chile</strong></p>
       </div>
+      <a class="text-link hero-speakers-link" href="#speakers">Meet the keynote speakers <span aria-hidden="true">↓</span></a>
     </div>
   </div>
 
-  <div class="hero-visual">
+  <div class="hero-visual" aria-hidden="true">
     <img
       class="hero-photo"
       src="https://images.unsplash.com/photo-1689850543263-01a52ccc6943?auto=format&fit=crop&fm=jpg&q=88&w=2000"
-      srcset="https://images.unsplash.com/photo-1689850543263-01a52ccc6943?auto=format&fit=crop&fm=jpg&q=86&w=1200 1200w, https://images.unsplash.com/photo-1689850543263-01a52ccc6943?auto=format&fit=crop&fm=jpg&q=88&w=2000 2000w, https://images.unsplash.com/photo-1689850543263-01a52ccc6943?auto=format&fit=crop&fm=jpg&q=88&w=3200 3200w"
+      srcset="https://images.unsplash.com/photo-1689850543263-01a52ccc6943?auto=format&fit=crop&fm=jpg&q=86&w=1200 1200w, https://images.unsplash.com/photo-1689850543263-01a52ccc6943?auto=format&fit=crop&fm=jpg&q=88&w=2000 2000w, https://images.unsplash.com/photo-1689850543263-01a52ccc6943?auto=format&fit=crop&fm=jpg&q=88&w=3200 3200w, https://images.unsplash.com/photo-1689850543263-01a52ccc6943?auto=format&fit=crop&fm=jpg&q=88&w=4800 4800w"
       sizes="100vw"
-      alt="Snow-covered Andes rising behind the Santiago skyline"
+      alt=""
       width="3200"
       height="2135"
       fetchpriority="high"
     />
+  </div>
+
+  <div class="container hero-countdown" id="dates">
+    <Countdown />
   </div>
 </section>

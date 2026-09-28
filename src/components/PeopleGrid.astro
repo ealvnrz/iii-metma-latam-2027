@@ -6,14 +6,22 @@ interface Props {
   emptyMessage: string;
   preview?: boolean;
   expectedCount?: number;
+  variant?: 'default' | 'invited';
+  pendingLabel?: string;
 }
 
-const { people, emptyMessage, preview = false, expectedCount = 0 } = Astro.props;
+const {
+  people, emptyMessage, preview = false, expectedCount = 0,
+  variant = 'default', pendingLabel = 'Keynote speaker',
+} = Astro.props;
 const pendingCount = Math.max(0, expectedCount - people.length);
 ---
 
 {people.length > 0 || pendingCount > 0 ? (
-  <div class:list={['people-grid', { 'people-grid-four': expectedCount === 4 }]}>
+  <div class:list={['people-grid', {
+    'people-grid-four': variant === 'default' && expectedCount === 4,
+    'people-grid-invited': variant === 'invited',
+  }]}>
     {people.map((person) => (
       <article class="person-card" id={preview ? undefined : person.id}>
         {person.portrait && (
@@ -56,7 +64,7 @@ const pendingCount = Math.max(0, expectedCount - people.length);
         </div>
         <div class="person-copy">
           <h3>To be announced</h3>
-          <p class="person-affiliation">Keynote speaker</p>
+          <p class="person-affiliation">{pendingLabel}</p>
         </div>
       </article>
     ))}

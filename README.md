@@ -5,16 +5,18 @@ Local multi-page prototype for the III METMA LATAM 2027 conference.
 ## Run locally
 
 ```bash
-npm install
-npm run dev
+pnpm install --frozen-lockfile
+pnpm run dev --host 127.0.0.1 --port 4321
 ```
 
-Open `http://localhost:4321` in your browser.
+Open `http://127.0.0.1:4321` in your browser. Astro starts the development server in the background. Run `pnpm exec astro dev status` to check it and `pnpm exec astro dev stop` to stop it.
+
+Local execution does not publish the site. Dependencies (`node_modules/`), builds (`dist/`), Astro cache (`.astro/`), Vercel state (`.vercel/`), logs and local environment files are excluded by `.gitignore`. Save review screenshots and reports under `_preview/`, which is also ignored. Source files and the portraits under `public/assets/people/` are intentional site assets and should be versioned when the changes are approved.
 
 ## Production build
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 The static output is written to `dist/`.
@@ -43,13 +45,15 @@ Speaker and committee records use the shared `Person` structure in `src/data/sit
 
 The portrait crop, size, format, filenames and folder conventions are documented in `public/assets/people/README.md`.
 
+The homepage and `/speakers` share four keynote slots and ten invited slots. Add confirmed speakers to the corresponding collection in `src/data/site.ts`; `PeopleGrid` fills any remaining slots automatically with numbered `To be announced` cards. Invited speakers are ordered alphabetically by first name and use five columns at 1200px and above, three at 900–1199px, two at 600–899px and one below 600px. Only public names, affiliations, countries and portraits belong in these records; keep invitation spreadsheets, candidate lists, internal notes and contact information outside the repository.
+
 ## Organizing and supporting institutions
 
 `site.organizers` lists UC Chile as the sole organizing institution. `site.sponsors` lists UC Chile, Universidad del Bío-Bío and ANID, in that order. The homepage and committees page use the same institutional-logo components and records. Original logo assets, their official sources and applicable brand guidance are documented in `public/assets/institutions/README.md`.
 
 ## Homepage photograph
 
-The homepage uses a single full-width photograph with a top-aligned crop to preserve the Andes. The hero height is the greater of 760 CSS pixels or 41.6667% of the viewport width, preserving approximately 12:5 proportions on wide screens. Wide windows gain vertical space for the landscape, and narrow windows retain enough height for the masthead and countdown. The image uses `sizes="100vw"` and responsive sources up to 4800 pixels; there are no blurred side fills or edge masks.
+The homepage uses a single full-width photograph with a top-aligned crop to preserve the Andes. The hero height is the greater of 760 CSS pixels or 41.6667% of the viewport width, preserving approximately 12:5 proportions on wide screens. The countdown follows the masthead instead of sitting at the bottom of the photograph, so raising the timer does not shorten the landscape or change its crop. The image uses `sizes="100vw"` and responsive sources up to 4800 pixels; there are no blurred side fills or edge masks.
 
 ## Conference countdown
 

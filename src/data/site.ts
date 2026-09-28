@@ -167,8 +167,106 @@ export const site = {
           position: 'center top',
         },
       },
+      {
+        id: 'reinhard-furrer',
+        name: 'Reinhard Furrer',
+        affiliations: [{
+          institution: 'University of Zurich',
+          country: 'Switzerland',
+          website: 'https://dm3l.uzh.ch/person/furrer/main',
+        }],
+        portrait: {
+          src: '/assets/people/speakers/reinhard-furrer.jpg',
+          alt: 'Portrait of Reinhard Furrer',
+          width: 400,
+          height: 400,
+          position: 'center top',
+        },
+      },
     ] as Person[],
-    invited: [] as Person[],
+    invited: [
+      {
+        id: 'aaron-ellison',
+        name: 'Aaron Ellison',
+        affiliations: [{
+          institution: 'Harvard University, Harvard Forest',
+          country: 'United States',
+          website: 'https://harvardforest.fas.harvard.edu/about/people/aaron-ellison/',
+        }],
+        portrait: {
+          src: '/assets/people/speakers/aaron-ellison.jpg',
+          alt: 'Portrait of Aaron Ellison',
+          width: 585,
+          height: 390,
+          position: 'center top',
+        },
+      },
+      {
+        id: 'fernanda-de-bastiani',
+        name: 'Fernanda de Bastiani',
+        affiliations: [{
+          institution: 'Universidade Federal de Pernambuco',
+          country: 'Brazil',
+          website: 'https://www.ufpe.br/dep-estatistica/corpo-docente',
+        }],
+        portrait: {
+          src: '/assets/people/speakers/fernanda-de-bastiani.jpg',
+          alt: 'Portrait of Fernanda de Bastiani',
+          width: 1500,
+          height: 2000,
+          position: 'center 28%',
+        },
+      },
+      {
+        id: 'fernando-quintana',
+        name: 'Fernando Quintana',
+        affiliations: [{
+          institution: 'Pontificia Universidad Católica de Chile',
+          country: 'Chile',
+          website: 'https://www.mat.uc.cl/personas/perfil/quintana',
+        }],
+        portrait: {
+          src: '/assets/people/speakers/fernando-quintana.jpg',
+          alt: 'Portrait of Fernando Quintana',
+          width: 225,
+          height: 300,
+          position: 'center top',
+        },
+      },
+      {
+        id: 'francisco-rodriguez-cortes',
+        name: 'Francisco Rodríguez Cortés',
+        affiliations: [{
+          institution: 'Universidad Nacional de Colombia',
+          country: 'Colombia',
+          website: 'https://fjrodriguezcortes.wordpress.com/',
+        }],
+        portrait: {
+          src: '/assets/people/speakers/francisco-rodriguez-cortes.png',
+          alt: 'Portrait of Francisco Rodríguez Cortés',
+          width: 400,
+          height: 248,
+          position: 'center top',
+        },
+      },
+      {
+        id: 'ronny-vallejos',
+        name: 'Ronny Vallejos',
+        affiliations: [{
+          institution: 'Universidad Técnica Federico Santa María',
+          country: 'Chile',
+          website: 'https://matematica.usm.cl/ronny-vallejos/',
+        }],
+        portrait: {
+          src: '/assets/people/speakers/ronny-vallejos.png',
+          alt: 'Portrait of Ronny Vallejos',
+          width: 1000,
+          height: 996,
+          scale: 1.45,
+          origin: '50% 28%',
+        },
+      },
+    ] as Person[],
   },
   committees: {
     organizing: [] as Person[],

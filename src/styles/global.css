@@ -196,7 +196,7 @@ h3 {
   isolation: isolate;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   min-height: 760px;
   height: max(760px, 41.6667vw);
@@ -304,7 +304,7 @@ h3 {
 
 .hero-countdown {
   flex: none;
-  margin-top: auto;
+  margin-top: 0;
 }
 
 .conference-countdown {
@@ -381,6 +381,14 @@ h3 {
 
 .keynote-preview-heading > a {
   flex-shrink: 0;
+}
+
+.section.invited-preview {
+  padding-top: 0;
+}
+
+.invited-preview > .container {
+  padding-top: 64px;
 }
 
 .speaker-announcement {
@@ -1013,6 +1021,33 @@ h3 {
   gap: 28px;
 }
 
+.people-grid.people-grid-invited {
+  grid-template-columns: 1fr;
+  gap: 32px 24px;
+}
+
+.people-grid-invited .person-card h3 {
+  font-size: 19px;
+}
+
+@media (min-width: 600px) {
+  .people-grid.people-grid-invited {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .people-grid.people-grid-invited {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .people-grid.people-grid-invited {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
 .person-card {
   display: flex;
   flex-direction: column;
@@ -1415,6 +1450,8 @@ h3 {
 @media (min-width: 1200px) {
   .hero-masthead {
     width: min(1900px, calc(100% - 96px));
+    grid-template-columns: clamp(400px, 16vw, 560px) minmax(0, max-content);
+    justify-content: center;
   }
 }
 

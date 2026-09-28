@@ -28,7 +28,7 @@ const description = 'Keynote and invited speakers for III METMA LATAM 2027 in Sa
     </div>
   </section>
 
-  <section class="detail-section" aria-labelledby="invited-title">
+  <section class="detail-section" id="invited-speakers" aria-labelledby="invited-title">
     <div class="container collection-heading">
       <div>
         <p class="collection-number">{site.speakers.invitedCount}</p>
@@ -37,7 +37,13 @@ const description = 'Keynote and invited speakers for III METMA LATAM 2027 in Sa
           <h2 id="invited-title">Invited speakers</h2>
         </div>
       </div>
-      <PeopleGrid people={site.speakers.invited} emptyMessage="Names and affiliations will be published as invited-speaker confirmations are completed." />
+      <PeopleGrid
+        people={site.speakers.invited}
+        expectedCount={site.speakers.invitedCount}
+        variant="invited"
+        pendingLabel="Invited speaker"
+        emptyMessage="Names and affiliations will be published as invited-speaker confirmations are completed."
+      />
     </div>
   </section>
 </SitePageLayout>

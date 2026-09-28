@@ -269,7 +269,53 @@ export const site = {
     ] as Person[],
   },
   committees: {
-    organizing: [] as Person[],
+    organizing: [
+      {
+        id: 'eloy-alvarado',
+        name: 'Eloy Alvarado',
+        affiliations: [{
+          institution: 'Pontificia Universidad Católica de Chile',
+          country: 'Chile',
+          website: 'https://www.mat.uc.cl/personas/perfil/eloy.alvarado',
+        }],
+      },
+      {
+        id: 'jonathan-acosta',
+        name: 'Jonathan Acosta',
+        affiliations: [{
+          institution: 'Pontificia Universidad Católica de Chile',
+          country: 'Chile',
+          website: 'https://www.mat.uc.cl/personas/perfil/jonathan.acosta',
+        }],
+      },
+      {
+        id: 'christian-caamano-carrillo',
+        name: 'Christian Caamaño-Carrillo',
+        affiliations: [{
+          institution: 'Universidad del Bío-Bío',
+          country: 'Chile',
+          website: 'https://www.ciencias.ubiobio.cl/ing_estadistica/docentes.html',
+        }],
+      },
+      {
+        id: 'ronny-vallejos',
+        name: 'Ronny Vallejos',
+        affiliations: [{
+          institution: 'Universidad Técnica Federico Santa María',
+          country: 'Chile',
+          website: 'https://matematica.usm.cl/ronny-vallejos/',
+        }],
+      },
+      {
+        id: 'jorge-mateu',
+        name: 'Jorge Mateu',
+        affiliations: [{
+          institution: 'Universitat Jaume I',
+          country: 'Spain',
+          website: 'https://mateu.uji.es/',
+        }],
+      },
+    ] as Person[],
     scientific: [] as Person[],
   },
   visitorInformation: {

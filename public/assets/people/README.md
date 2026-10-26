@@ -45,6 +45,14 @@ These are unmodified source images, stored locally so the site does not depend o
 
 Fernando's institutional original is small. Replace it with a higher-resolution speaker-supplied photograph when available; do not artificially enlarge the source file. Source links document provenance and do not imply a reuse license.
 
+### Speaker added on 26 October 2026
+
+| Speaker | Profile / affiliation source | Original image | Local file | Dimensions | CSS framing |
+| --- | --- | --- | --- | --- | --- |
+| Zaida Jesús Quiroz Cornejo | [PUCP faculty profile](https://www.pucp.edu.pe/profesor/zaida-quiroz-cornejo); [PuntoEdu PUCP article and photograph](https://puntoedu.pucp.edu.pe/orgullo-pucp/la-dra-zaida-quiroz-obtiene-premio-latinoamericano-como-coautora-de-trabajo-estadistico-en-big-data/) | [JPEG](https://files.pucp.education/puntoedu/wp-content/uploads/2021/06/05231322/zaida-quiroz-1920x1080-1.jpg) | `speakers/zaida-quiroz-cornejo.jpg` | 1920 × 1080 | Unmodified source; centered horizontally with a top-aligned square crop in CSS. |
+
+Affiliation and image source checked on 26 October 2026. The PuntoEdu article credits the photograph to her personal archive. The faculty profile currently uses a generic placeholder, so the portrait comes from the university's article. Source links document provenance and do not imply a reuse license.
+
 Example portrait field:
 
 ```ts

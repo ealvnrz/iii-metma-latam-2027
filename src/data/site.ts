@@ -266,6 +266,22 @@ export const site = {
           origin: '50% 28%',
         },
       },
+      {
+        id: 'zaida-quiroz-cornejo',
+        name: 'Zaida Jesús Quiroz Cornejo',
+        affiliations: [{
+          institution: 'Pontificia Universidad Católica del Perú',
+          country: 'Peru',
+          website: 'https://www.pucp.edu.pe/profesor/zaida-quiroz-cornejo',
+        }],
+        portrait: {
+          src: '/assets/people/speakers/zaida-quiroz-cornejo.jpg',
+          alt: 'Portrait of Zaida Jesús Quiroz Cornejo',
+          width: 1920,
+          height: 1080,
+          position: 'center top',
+        },
+      },
     ] as Person[],
   },
   committees: {

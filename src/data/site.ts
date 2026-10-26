@@ -202,6 +202,22 @@ export const site = {
         },
       },
       {
+        id: 'carlos-diaz-avalos',
+        name: 'Carlos Díaz Ávalos',
+        affiliations: [{
+          institution: 'Universidad Nacional Autónoma de México (UNAM), IIMAS',
+          country: 'Mexico',
+          website: 'https://www.iimas.unam.mx/directorio?idsis=19',
+        }],
+        portrait: {
+          src: '/assets/people/speakers/carlos-diaz-avalos.jpg',
+          alt: 'Portrait of Carlos Díaz Ávalos',
+          width: 600,
+          height: 600,
+          position: 'center top',
+        },
+      },
+      {
         id: 'fernanda-de-bastiani',
         name: 'Fernanda de Bastiani',
         affiliations: [{

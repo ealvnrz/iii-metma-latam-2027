@@ -348,7 +348,53 @@ export const site = {
         }],
       },
     ] as Person[],
-    scientific: [] as Person[],
+    scientific: [
+      {
+        id: 'daira-velandia',
+        name: 'Daira Velandia',
+        affiliations: [{
+          institution: 'Universidad de Valparaíso',
+          country: 'Chile',
+          website: 'https://ceacc-uv.cl/equipo-investigadores/daira-velandia-munoz-2/',
+        }],
+      },
+      {
+        id: 'francisco-cuevas',
+        name: 'Francisco Cuevas',
+        affiliations: [{
+          institution: 'Universidad Técnica Federico Santa María',
+          country: 'Chile',
+          website: 'https://matematica.usm.cl/cuevas-francisco/',
+        }],
+      },
+      {
+        id: 'guillermo-ferreira',
+        name: 'Guillermo Ferreira',
+        affiliations: [{
+          institution: 'Universidad de Concepción',
+          country: 'Chile',
+          website: 'https://estadistica.udec.cl/academico-udec-participa-en-investigacion-que-mejora-la-prediccion-de-la-volatilidad-en-los-mercados-financieros/',
+        }],
+      },
+      {
+        id: 'lucas-da-cunha',
+        name: 'Lucas Da Cunha',
+        affiliations: [{
+          institution: 'Pontificia Universidad Católica de Chile',
+          country: 'Chile',
+          website: 'https://www.mat.uc.cl/personas/perfil/lucas.dacunha',
+        }],
+      },
+      {
+        id: 'moreno-bevilacqua',
+        name: 'Moreno Bevilacqua',
+        affiliations: [{
+          institution: 'Universidad Adolfo Ibáñez (UAI)',
+          country: 'Chile',
+          website: 'https://www.uai.cl/profesores/ingenieria-y-ciencias/moreno-bevilacqua',
+        }],
+      },
+    ] as Person[],
   },
   visitorInformation: {
     verifiedOn: '18 August 2026',

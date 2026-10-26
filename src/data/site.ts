@@ -389,7 +389,7 @@ export const site = {
         id: 'moreno-bevilacqua',
         name: 'Moreno Bevilacqua',
         affiliations: [{
-          institution: 'Universidad Adolfo Ibáñez (UAI)',
+          institution: 'Universidad Adolfo Ibáñez',
           country: 'Chile',
           website: 'https://www.uai.cl/profesores/ingenieria-y-ciencias/moreno-bevilacqua',
         }],

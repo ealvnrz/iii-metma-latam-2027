@@ -283,6 +283,22 @@ export const site = {
         },
       },
       {
+        id: 'xavier-emery',
+        name: 'Xavier Emery',
+        affiliations: [{
+          institution: 'Universidad de Chile',
+          country: 'Chile',
+          website: 'https://minas.uchile.cl/academicos/jornada-completa#4',
+        }],
+        portrait: {
+          src: '/assets/people/speakers/xavier-emery.png',
+          alt: 'Portrait of Xavier Emery',
+          width: 400,
+          height: 400,
+          position: 'center top',
+        },
+      },
+      {
         id: 'zaida-quiroz-cornejo',
         name: 'Zaida Jesús Quiroz Cornejo',
         affiliations: [{

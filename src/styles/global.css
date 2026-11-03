@@ -529,6 +529,39 @@ h3 {
   transform: translateX(3px);
 }
 
+.journal-collection-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.75fr);
+  gap: clamp(48px, 8vw, 112px);
+  align-items: center;
+}
+
+.journal-collection-description {
+  max-width: 620px;
+  margin: 30px 0 0;
+  color: #3c3e41;
+  font-size: clamp(17px, 1.45vw, 19px);
+  line-height: 1.78;
+}
+
+.journal-collection-cover {
+  width: min(100%, 244px);
+  margin: 0;
+  justify-self: center;
+}
+
+.journal-collection-cover img {
+  width: 100%;
+  box-shadow: 0 12px 32px rgba(17, 17, 17, 0.14);
+}
+
+.journal-collection-cover figcaption {
+  margin-top: 18px;
+  color: var(--color-muted);
+  font-size: 12px;
+  text-align: center;
+}
+
 .important-date .section-heading {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -1566,6 +1599,7 @@ h3 {
   }
 
   .split-section,
+  .journal-collection-grid,
   .venue-inner,
   .venue-teaser-grid,
   .detail-grid,
@@ -1573,6 +1607,10 @@ h3 {
   .visitor-intro {
     grid-template-columns: 1fr;
     gap: 48px;
+  }
+
+  .journal-collection-cover {
+    width: min(100%, 200px);
   }
 
   .page-hero-grid {

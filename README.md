@@ -51,6 +51,10 @@ The homepage and `/speakers` share four keynote slots and ten invited slots. Add
 
 `site.organizers` lists UC Chile as the sole organizing institution. `site.sponsors` lists UC Chile, Universidad del Bío-Bío and ANID, in that order. The homepage and committees page use the same institutional-logo components and records. Original logo assets, their official sources and applicable brand guidance are documented in `public/assets/institutions/README.md`.
 
+## Journal collection
+
+The homepage announcement for the collection in *Environmental and Ecological Statistics* is in `src/components/JournalCollection.astro`, after the programme summary. The journal cover and its source are in `public/assets/journals/`.
+
 ## Homepage photograph
 
 The homepage uses a single full-width photograph with a top-aligned crop to preserve the Andes. The hero height is the greater of 760 CSS pixels or 41.6667% of the viewport width, preserving approximately 12:5 proportions on wide screens. The countdown follows the masthead instead of sitting at the bottom of the photograph, so raising the timer does not shorten the landscape or change its crop. The image uses `sizes="100vw"` and responsive sources up to 4800 pixels; there are no blurred side fills or edge masks.

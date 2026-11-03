@@ -54,6 +54,14 @@ Fernando's institutional original is small. Replace it with a higher-resolution 
 
 Affiliations and image sources checked on 26 October 2026. Carlos's portrait comes from the IIMAS–UNAM directory. The PuntoEdu article credits Zaida's photograph to her personal archive. Her faculty profile currently uses a generic placeholder, so her portrait comes from the university's article. Source links document provenance and do not imply a reuse license.
 
+### Speaker added on 3 November 2026
+
+| Speaker | Profile / affiliation source | Original image | Local file | Dimensions | CSS framing |
+| --- | --- | --- | --- | --- | --- |
+| Xavier Emery | [Universidad de Chile, Department of Mining Engineering](https://minas.uchile.cl/academicos/jornada-completa#4); [IDIA collaborators and photograph](https://idia.uchile.cl/colaboradores/) | [PNG](https://idia.uchile.cl/wp-content/uploads/2026/01/Diseno-sin-titulo-6.png) | `speakers/xavier-emery.png` | 400 × 400 | Unmodified institutional square portrait; centered horizontally and top aligned. |
+
+Affiliation and image source checked on 3 November 2026. The portrait comes from the Universidad de Chile's Iniciativa de Datos e Inteligencia Artificial (IDIA). Source links document provenance and do not imply a reuse license.
+
 Example portrait field:
 
 ```ts
